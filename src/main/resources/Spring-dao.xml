@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!--链接jdbc.properties-->
+    <context:property-placeholder location="classpath:jdbc.properties" />
+
+    <!-- 2.数据库连接池 -->
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <!-- 配置连接池属性 -->
+        <property name="driverClass" value="${jdbc.driverClassName}" />
+        <property name="jdbcUrl" value="${jdbc.url}" />
+        <property name="user" value="${jdbc.username}" />
+        <property name="password" value="${jdbc.password}" />
+
+        <!-- c3p0连接池的私有属性 -->
+        <!--最大连接数，如果数据库连接请求超过此数，后面的数据库连接请求将被加入到等待队列中-->
+        <property name="maxPoolSize" value="${maxPoolSize}" />
+        <property name="minPoolSize" value="${minPoolSize}" />
+        <property name="initialPoolSize" value="${initialPoolSize}"/>
+        <!-- 关闭连接后不自动commit -->
+        <property name="autoCommitOnClose" value="false" />
+        <!-- 10000毫秒后如果sql数据没有执行完将会报错-->
+        <property name="checkoutTimeout" value="10000" />
+        <!-- 当获取连接失败重试次数 -->
+        <property name="acquireRetryAttempts" value="2" />
+    </bean>
+
+    <!--&lt;!&ndash;定义JDBC模板Bean,将上面的dataSource注入JdbcTemplate中&ndash;&gt;-->
+    <!--<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate"-->
+          <!--p:dataSource-ref="dataSource"/>-->
+
+</beans>
+
