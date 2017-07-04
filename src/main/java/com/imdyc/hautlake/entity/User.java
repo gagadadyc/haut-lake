@@ -1,4 +1,4 @@
-package com.imdyc.hautlake.beans;
+package com.imdyc.hautlake.entity;
 
 /**
  * Created by gagada on 2017/6/24.
@@ -6,7 +6,7 @@ package com.imdyc.hautlake.beans;
 public class User {
 
     private int id;
-    private String userName;
+    private String username;
     private String password;
     private String gender;
     private boolean age;
@@ -24,12 +24,12 @@ public class User {
         this.id = id;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
@@ -94,5 +94,22 @@ public class User {
 
     public void setId_deleted(boolean id_deleted) {
         this.id_deleted = id_deleted;
+    }
+
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", userName='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", gender='" + gender + '\'' +
+                ", age=" + age +
+                ", phone='" + phone + '\'' +
+                ", Email='" + Email + '\'' +
+                ", c_t=" + c_t +
+                ", u_t=" + u_t +
+                ", id_deleted=" + id_deleted +
+                '}';
     }
 }

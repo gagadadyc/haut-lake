@@ -31,6 +31,25 @@
         <property name="acquireRetryAttempts" value="2" />
     </bean>
 
+    <!-- 3.配置Mybatis的SqlSessionFactory对象 -->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <!-- 注入数据库连接池 -->
+        <property name="dataSource" ref="dataSource" />
+        <!-- 配置MyBaties全局配置文件:mybatis-config.xml -->
+        <property name="configLocation" value="classpath:mybatis-config.xml" />
+        <!-- 扫描entity包 使用别名 -->
+        <property name="typeAliasesPackage" value="com.imdyc.hautlake.entity" />
+        <!-- 扫描sql配置文件:mapper需要的xml文件 -->
+        <property name="mapperLocations" value="classpath:mapper/*.xml" />
+    </bean>
+
+    <!-- 4.配置扫描Dao接口包，动态实现Dao接口，注入到spring容器中 -->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <!-- 注入sqlSessionFactory -->
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
+        <!-- 给出需要扫描Dao接口包 -->
+        <property name="basePackage" value="com.imdyc.hautlake.dao" />
+    </bean>
     <!--&lt;!&ndash;定义JDBC模板Bean,将上面的dataSource注入JdbcTemplate中&ndash;&gt;-->
     <!--<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate"-->
           <!--p:dataSource-ref="dataSource"/>-->

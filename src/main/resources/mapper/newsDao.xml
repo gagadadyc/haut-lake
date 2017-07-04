@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<!--扫描指定包-->
+<mapper namespace="com.imdyc.hautlake.dao.NewsDao">
+    <update id="markDeleteNews" >
+        UPDATE t_haut_news
+            SET
+            news_delete = now()
+            WHERE news_id in(
+            <foreach item="item" collection="array" separator=",">
+                #{item}
+            </foreach>
+             )
+    </update>
+
+
+</mapper>
