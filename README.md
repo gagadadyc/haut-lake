@@ -3,12 +3,12 @@
 
 ## 运行环境及使用技术
 	
-	 - 编译器：IntelliJ IDEA
-	 - 环境支持：JDK1.8、Java EE 7、Apache Tomcat 8.0.x
-	 - 开发语言：Java、HTML、JavaScript、EL Expression
-	 - 程序类型：Web类B/S应用程序
-	 - 运用框架：Spring framework，Spring MVC，Mybatis
-	 - 开发工具：Maven
+- 编译器：IntelliJ IDEA
+- 环境支持：JDK1.8、Java EE 7、Apache Tomcat 8.0.x
+- 开发语言：Java、HTML、JavaScript、EL Expression
+- 程序类型：Web类B/S应用程序
+- 运用框架：Spring framework，Spring MVC，Mybatis
+- 开发工具：Maven
 	 
 ## 项目功能描述
 本项目主要是对旅游网站的新闻、目录进行增删改查的功能，其中
